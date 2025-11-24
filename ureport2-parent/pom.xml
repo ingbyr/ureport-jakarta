@@ -7,6 +7,8 @@
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
 	</properties>
 	<licenses>
 		<license>
@@ -14,14 +16,6 @@
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
-	<developers>
-		<developer>
-			<name>Gaojie</name>
-			<email>jacky.gao@bstek.com</email>
-			<organization>Bstek</organization>
-			<organizationUrl>http://www.bstek.com</organizationUrl>
-		</developer>
-	</developers>
 	<build>
 		<resources>
 			<resource>
@@ -87,16 +81,20 @@
 			</resource>
 		</resources>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-					<encoding>utf-8</encoding>
-				</configuration>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                        <arg>-g</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
 			<plugin>
 			  <groupId>org.apache.maven.plugins</groupId>
 			  <artifactId>maven-release-plugin</artifactId>
@@ -153,10 +151,4 @@
 		</repository>
 	</distributionManagement>
 
-	<name>UReport2 Parent Project</name>
-	<url>https://github.com/youseries/ureport/tree/master/ureport2-parent</url>
-	<issueManagement>
-		<url>${jira.browse.url}/VELOCITY</url>
-	</issueManagement>
-	<description>UReport2 Parent Project</description>
 </project>

@@ -28,15 +28,31 @@
 			<artifactId>dom4j</artifactId>
 			<version>1.6.1</version>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>6.2.12</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>4.3.11.RELEASE</version>
+			<version>6.2.12</version>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>6.2.12</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>4.3.11.RELEASE</version>
+			<version>6.2.12</version>
 		</dependency>
 		<dependency>
 		    <groupId>com.itextpdf</groupId>
@@ -78,12 +94,33 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.5</version>
 		</dependency>	
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.42</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>11.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
 	</dependencies>
 	<licenses>
 		<license>
@@ -91,24 +128,4 @@
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
-	<developers>
-		<developer>
-			<name>Gaojie</name>
-			<email>jacky.gao@bstek.com</email>
-			<organization>Bstek</organization>
-			<organizationUrl>http://www.bstek.com</organizationUrl>
-		</developer>
-	</developers>
-	<scm>
-		<connection>scm:git:https://github.com/youseries/ureport.git</connection>
-		<developerConnection>scm:git:git@github.com:youseries/ureport.git</developerConnection>
-		<url>https://github.com/youseries/ureport</url>
-    <tag>ureport2-core-2.2.4</tag>
-  </scm>
-	<organization>
-		<name>Bstek</name>
-		<url>http://www.bstek.com</url>
-	</organization>	
-	<name>UReport2 Core Project</name>
-	<url>https://github.com/youseries/ureport/tree/master/ureport2-core</url>
 </project>
