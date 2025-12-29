@@ -1,5 +1,6 @@
 package com.bstek.ureport.export.pdf.font;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.Map;
 /**
  * 支持中文与英文运行环境字体映射
  */
+@Slf4j
 public class FontNameMapper {
     private static Map<String, String> FONTS = new HashMap<>();
 
@@ -30,9 +32,11 @@ public class FontNameMapper {
         if (locale == Locale.US || locale == Locale.ENGLISH) {
             String enFontName = FONTS.get(cnFontName);
             if (StringUtils.isNoneBlank(enFontName)) {
+                log.debug("Ureport get font name {} from {}", enFontName, cnFontName);
                 return enFontName;
             }
         }
+        log.debug("Ureport get font name {}", cnFontName);
         return cnFontName;
     }
 

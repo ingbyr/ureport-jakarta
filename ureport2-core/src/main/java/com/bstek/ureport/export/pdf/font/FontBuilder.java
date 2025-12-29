@@ -21,6 +21,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.pdf.BaseFont;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;
@@ -37,6 +38,7 @@ import java.util.List;
  * @author Jacky.gao
  * @since 2014年4月22日
  */
+@Slf4j
 public class FontBuilder implements ApplicationContextAware {
     public static final Map<String, String> fontPathMap = new HashMap<String, String>();
     private static final Map<String, BaseFont> fontMap = new HashMap<String, BaseFont>();
@@ -84,6 +86,7 @@ public class FontBuilder implements ApplicationContextAware {
         if (systemFontNameList.contains(fontName)) {
             return new java.awt.Font(fontName, fontStyle, Float.valueOf(size).intValue());
         }
+        log.warn("Can not find font: {}", fontName);
         String fontPath = fontPathMap.get(fontName);
         if (fontPath == null) {
             fontName = "宋体";
@@ -92,6 +95,7 @@ public class FontBuilder implements ApplicationContextAware {
                 return null;
             }
         }
+        log.warn("Choose callback font: {}, {}", fontName, fontPath);
         InputStream inputStream = null;
         try {
             inputStream = applicationContext.getResource(fontPath).getInputStream();
@@ -111,6 +115,7 @@ public class FontBuilder implements ApplicationContextAware {
         for (String name : fontNames) {
             systemFontNameList.add(name);
         }
+        log.info("Ureport load system fonts: {}", Arrays.toString(fontNames));
         Collection<FontRegister> fontRegisters = applicationContext.getBeansOfType(FontRegister.class).values();
         for (FontRegister fontReg : fontRegisters) {
             String fontName = fontReg.getFontName();
