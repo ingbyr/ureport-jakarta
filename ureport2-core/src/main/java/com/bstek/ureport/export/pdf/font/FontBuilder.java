@@ -46,7 +46,6 @@ public class FontBuilder implements ApplicationContextAware {
     private static List<String> systemFontNameList = new ArrayList<String>();
 
     public static Font getFont(String fontName, int fontSize, boolean fontBold, boolean fontItalic, boolean underLine) {
-        fontName = FontNameMapper.transfer(fontName);
         BaseFont baseFont = fontMap.get(fontName);
         Font font = null;
         if (baseFont != null) {
